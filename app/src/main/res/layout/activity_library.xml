@@ -60,6 +60,19 @@
 
             <View style="@style/LineBreakStyle" />
 
+            <RelativeLayout
+                android:id="@+id/genres_view"
+                style="@style/CategoryWrapperStyle">
+
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/genre_heading" />
+
+                <ImageView style="@style/ChevronRightStyle" />
+            </RelativeLayout>
+
+            <View style="@style/LineBreakStyle" />
+
         </LinearLayout>
 
     </ScrollView>
