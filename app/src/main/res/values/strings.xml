@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tangent</string>
+    <string name="library_heading">Library</string>
+    <string name="song_heading">Songs</string>
+    <string name="artist_heading">Artists</string>
+    <string name="album_heading">Albums</string>
+</resources>

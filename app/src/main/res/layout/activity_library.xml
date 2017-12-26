@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.udacity.faraonc.tangent.LibraryActivity">
+
+
+    <TextView
+        style="@style/HeadingStyle"
+        android:text="@string/library_heading" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/songs_view"
+                style="@style/CategoryWrapperStyle">
+
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/song_heading" />
+
+                <ImageView style="@style/ChevronRightStyle" />
+            </RelativeLayout>
+
+            <View style="@style/LineBreakStyle" />
+
+            <RelativeLayout
+                android:id="@+id/artists_view"
+                style="@style/CategoryWrapperStyle">
+
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/artist_heading" />
+
+                <ImageView style="@style/ChevronRightStyle" />
+            </RelativeLayout>
+
+            <View style="@style/LineBreakStyle" />
+
+            <RelativeLayout
+                android:id="@+id/albums_view"
+                style="@style/CategoryWrapperStyle">
+
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/album_heading" />
+
+                <ImageView style="@style/ChevronRightStyle" />
+            </RelativeLayout>
+
+            <View style="@style/LineBreakStyle" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
