@@ -18,8 +18,8 @@ class MusicManager implements Serializable {
     private TreeMap<String, ArrayList<Music>> genresMap;
     private TreeMap<String, ArrayList<Music>> artistsMap;
     private TreeMap<String, ArrayList<Music>> albumsMap;
-    private TreeMap<String, ArtistImageBundle> artistsImageMap;
-    private TreeMap<String, AlbumImageBundle> albumsImageMap; //TODO implement image mapping
+    private TreeMap<String, MusicImageBundle> artistsImageMap;
+    private TreeMap<String, MusicImageBundle> albumsImageMap;
     private TreeSet<Music> songsSet;
 
     MusicManager() {
@@ -29,45 +29,6 @@ class MusicManager implements Serializable {
         this.artistsImageMap = new TreeMap<>();
         this.albumsImageMap = new TreeMap<>();
         this.songsSet = new TreeSet<>();
-    }
-
-    class ArtistImageBundle{
-        private int image;
-        private String artist;
-
-        ArtistImageBundle(int image, String artist){
-            this.image = image;
-            this.artist = artist;
-        }
-
-        int getArtistImage(){
-           return this.image;
-        }
-
-        String getArtistName(){
-            return this.artist;
-        }
-
-    }
-
-    class AlbumImageBundle{
-
-        private int image;
-        private String album;
-
-        AlbumImageBundle(int image, String album){
-            this.image = image;
-            this.album = album;
-        }
-
-        int getArtistImage(){
-            return this.image;
-        }
-
-        String getAlbumName(){
-            return this.album;
-        }
-
     }
 
     TreeSet<Music> getSongsList() {
@@ -125,11 +86,11 @@ class MusicManager implements Serializable {
             this.albumsMap.get(album).add(music);
 
             if(!this.artistsImageMap.containsKey(artist)){
-                this.artistsImageMap.put(artist, new ArtistImageBundle(music.getArtistImage(), music.getArtist()));
+                this.artistsImageMap.put(artist, new MusicImageBundle(MusicImageBundleEnum.ARTISTS, music.getArtist(), music.getArtistImage()));
             }
 
             if(!this.albumsImageMap.containsKey(album)){
-                this.albumsImageMap.put(artist, new AlbumImageBundle(music.getAlbumImage(), music.getAlbum()));
+                this.albumsImageMap.put(artist, new MusicImageBundle(MusicImageBundleEnum.ALBUMS, music.getAlbum(), music.getAlbumImage()));
             }
 
             return true;
@@ -137,6 +98,21 @@ class MusicManager implements Serializable {
         return false;
     }
 
+    TreeMap<String, MusicImageBundle> getArtistsImageMap(){
+        return this.artistsImageMap;
+    }
+
+    TreeMap<String, MusicImageBundle> getAlbumsImageMap(){
+        return this.albumsImageMap;
+    }
+
+    TreeMap<String, ArrayList<Music>> getArtistsMap(){
+        return this.artistsMap;
+    }
+
+    TreeMap<String, ArrayList<Music>> getAlbumsMap(){
+        return this.albumsMap;
+    }
     //TODO removeMusic
     //This is not needed for the project requirement.
 
@@ -172,5 +148,7 @@ class MusicManager implements Serializable {
                 Log.v("albumsMap", key + " -> " + item.getTitle());
         }
     }
+
+    //TODO print image maps
 
 }

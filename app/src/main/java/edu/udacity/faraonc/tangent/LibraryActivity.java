@@ -11,8 +11,9 @@ import android.content.Intent;
 public class LibraryActivity extends AppCompatActivity {
 
     private MusicManager musicManager = new MusicManager();
-    final static String SESSION = "SESSION_TYPE";
+    final static String HEADER_NAME = "HEADER_NAME";
     final static String LIST_PACKAGE = "LIST_PACKAGE";
+    final static String SESSION_TYPE = "SESSION_TYPE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,8 @@ public class LibraryActivity extends AppCompatActivity {
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LibraryActivity.this, ListingActivity.class);
-                intent.putExtra(SESSION, SessionEnum.SONGS);
+                Intent intent = new Intent(LibraryActivity.this, ListActivity.class);
+                intent.putExtra(HEADER_NAME, getText(R.string.song_heading));
                 intent.putExtra(LIST_PACKAGE, musicManager.getSongsList());
                 startActivity(intent);
             }
@@ -40,20 +41,23 @@ public class LibraryActivity extends AppCompatActivity {
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LibraryActivity.this, ListingActivity.class);
-                intent.putExtra(SESSION, SessionEnum.SONGS);
+                Intent intent = new Intent(LibraryActivity.this, GridActivity.class);
+                intent.putExtra(HEADER_NAME, getText(R.string.artist_heading));
                 intent.putExtra(LIST_PACKAGE, musicManager);
+                intent.putExtra(SESSION_TYPE, MusicImageBundleEnum.ARTISTS);
                 startActivity(intent);
             }
         });
 
-//        TODO implement Album View
         categoryViewGroup = (RelativeLayout) findViewById(R.id.albums_view);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-//                startActivity(colorsIntent);
+                Intent intent = new Intent(LibraryActivity.this, GridActivity.class);
+                intent.putExtra(HEADER_NAME, getText(R.string.album_heading));
+                intent.putExtra(LIST_PACKAGE, musicManager);
+                intent.putExtra(SESSION_TYPE, MusicImageBundleEnum.ALBUMS);
+                startActivity(intent);
             }
         });
 

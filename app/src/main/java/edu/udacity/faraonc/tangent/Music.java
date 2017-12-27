@@ -45,7 +45,7 @@ class Music implements Serializable, Comparable {
     }
 
     String getGenre() {
-        return genre;
+        return this.genre;
     }
 
     void setGenre(String genre) {
@@ -53,7 +53,7 @@ class Music implements Serializable, Comparable {
     }
 
     String getArtist() {
-        return artist;
+        return this.artist;
     }
 
     void setArtist(String artist) {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.udacity.faraonc.tangent.ListingActivity">
+    tools:context="edu.udacity.faraonc.tangent.GridActivity">
 
     <TextView
         android:id="@+id/grid_view_heading"
