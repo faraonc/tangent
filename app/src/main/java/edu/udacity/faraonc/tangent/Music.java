@@ -11,62 +11,82 @@ import java.io.Serializable;
 class Music implements Serializable, Comparable {
 
     private int data;
+    private int albumImage;
+    private int artistImage;
     private String title;
     private String album;
     private String genre;
     private String artist;
 
-    public Music(int data, String title, String album, String genre, String artist) {
+    Music(int data, String title, String album, String genre, String artist, int albumImage, int artistImage) {
         this.data = data;
         this.title = title;
         this.album = album;
         this.genre = genre;
         this.artist = artist;
+        this.albumImage = albumImage;
+        this.artistImage = artistImage;
     }
 
-    public int getData() {
+    int getData() {
         return this.data;
     }
 
-    public void setData(int data) {
+    void setData(int data) {
         this.data = data;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return this.title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-    public String getGenre() {
+    String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public String getArtist() {
+    String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
+    void setArtist(String artist) {
         this.artist = artist;
     }
 
-    public String getAlbum() {
+    String getAlbum() {
         return this.album;
     }
 
-    public void setAlbum(String album) {
+    void setAlbum(String album) {
         this.album = album;
+    }
+
+    int getAlbumImage() {
+        return this.albumImage;
+    }
+
+    void setAlbumImage(int albumImage) {
+        this.albumImage = albumImage;
+    }
+
+    int getArtistImage() {
+        return this.artistImage;
+    }
+
+    void setArtistImage(int artistImage) {
+        this.artistImage = artistImage;
     }
 
     @Override
     public int compareTo(@NonNull Object o) {
-        Music rhs = (Music)o;
+        Music rhs = (Music) o;
         return (this.title.compareTo(rhs.title));
     }
 }
