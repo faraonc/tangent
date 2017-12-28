@@ -10,27 +10,36 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
+/**
+ * Manages the list of genres.
+ *
+ * @author ConardJames
+ * @version 122817-01
+ */
 public class GenreActivity extends AppCompatActivity {
 
     private String header;
     private MusicManager musicManager;
-    private MusicImageBundleEnum sessionType;
 
     @Override
+    /**
+     * Set activity and layout.
+     *
+     * @param savedInstanceState the state of the activity.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
         this.header = (String) intent.getSerializableExtra(LibraryActivity.HEADER_NAME);
-        setContentView(R.layout.activity_list);
         this.musicManager = (MusicManager) intent.getSerializableExtra(LibraryActivity.LIST_PACKAGE);
-        this.sessionType = (MusicImageBundleEnum) intent.getSerializableExtra(LibraryActivity.SESSION_TYPE);
+        setContentView(R.layout.activity_list);
         display();
     }
 
+    /**
+     * Display the user-interface.
+     */
     private void display() {
         ((TextView) findViewById(R.id.list_view_heading)).setText(this.header);
         ArrayList<String> genreList = new ArrayList<>(this.musicManager.getGenres());
@@ -42,7 +51,6 @@ public class GenreActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent intent = new Intent(GenreActivity.this, ListActivity.class);
                 String key = (String) adapterView.getItemAtPosition(i);
                 intent.putExtra(LibraryActivity.HEADER_NAME, key);
@@ -52,6 +60,4 @@ public class GenreActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

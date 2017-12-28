@@ -60,20 +60,15 @@
 
     <style name="SongItemStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">4</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">2dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
     <style name="ArtistItemStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">3</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
@@ -90,14 +85,16 @@
 
     <style name="ListParentLayoutStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">66dp</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="ListItemLayoutStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">16dp</item>
     </style>
 
@@ -195,13 +192,14 @@
     <style name="PlayArtistStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
     <style name="PlaySeekStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_margin">20dp</item>
     </style>
 
     <style name="PlayFrameStyle">
@@ -219,7 +217,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
-
 
     <style name="PlayContainerStyle">
         <item name="android:layout_width">match_parent</item>

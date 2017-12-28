@@ -11,32 +11,48 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Manages the grid of music image bundles.
+ *
+ * @author ConardJames
+ * @version 122817-01
+ */
 public class GridActivity extends AppCompatActivity {
 
     private String header;
     private MusicManager musicManager;
-    private MusicImageBundleEnum sessionType;
+    private MusicImageBundle.ImageBundleEnum sessionType;
 
     @Override
+    /**
+     * Set activity and layout.
+     *
+     * @param savedInstanceState the state of the activity.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
         this.header = (String) intent.getSerializableExtra(LibraryActivity.HEADER_NAME);
-        setContentView(R.layout.activity_grid);
         this.musicManager = (MusicManager) intent.getSerializableExtra(LibraryActivity.LIST_PACKAGE);
-        this.sessionType = (MusicImageBundleEnum) intent.getSerializableExtra(LibraryActivity.SESSION_TYPE);
+        this.sessionType = (MusicImageBundle.ImageBundleEnum) intent.getSerializableExtra(LibraryActivity.SESSION_TYPE);
+        setContentView(R.layout.activity_grid);
         display();
     }
 
+    /**
+     * Display the correct bundle information.
+     */
     private void display(){
-        if(this.sessionType == MusicImageBundleEnum.ARTISTS){
+        if(this.sessionType == MusicImageBundle.ImageBundleEnum.ARTISTS){
             displayArtistsGrid();
-        } else if(this.sessionType == MusicImageBundleEnum.ALBUMS){
+        } else if(this.sessionType == MusicImageBundle.ImageBundleEnum.ALBUMS){
             displayAlbumsGrid();
         }
     }
 
+    /**
+     * Display the content for artists.
+     */
     private void displayArtistsGrid(){
         ((TextView) findViewById(R.id.grid_view_heading)).setText(this.header);
         GridView gridView = (GridView) findViewById(R.id.grid);
@@ -47,7 +63,6 @@ public class GridActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent intent = new Intent(GridActivity.this, ListActivity.class);
                 MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
                 intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());
@@ -58,6 +73,9 @@ public class GridActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Display the content for albums.
+     */
     private void displayAlbumsGrid(){
         ((TextView) findViewById(R.id.grid_view_heading)).setText(this.header);
         GridView gridView = (GridView) findViewById(R.id.grid);
@@ -68,7 +86,6 @@ public class GridActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent intent = new Intent(GridActivity.this, ListActivity.class);
                 MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
                 intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());

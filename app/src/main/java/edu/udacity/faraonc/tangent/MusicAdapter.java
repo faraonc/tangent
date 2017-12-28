@@ -1,6 +1,8 @@
 package edu.udacity.faraonc.tangent;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,23 +16,43 @@ import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
- * Created by faraonc on 12/26/17.
+ * Adapter for the list of music.
+ *
+ * @author ConardJames
+ * @version 122817-01
  */
-
 class MusicAdapter extends ArrayAdapter<Music> {
 
+    /**
+     * Constuct an adapter using TreeSet.
+     *
+     * @param context for resource access
+     * @param musics  the list of Musics
+     */
     MusicAdapter(Context context, TreeSet<Music> musics) {
         super(context, 0, new ArrayList<Music>(musics));
     }
 
+    /**
+     * Constuct an adapter using ArrayList.
+     *
+     * @param context for resource access
+     * @param musics  the list of Musics
+     */
     MusicAdapter(Context context, ArrayList<Music> musics) {
         super(context, 0, musics);
     }
 
     @NonNull
     @Override
+    /**
+     * Get the view for each entry of the ListView.
+     *
+     * @param position current position in the adapter's list.
+     * @param convertView the list item view.
+     * @param parent the parent view group.
+     */
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
@@ -42,14 +64,25 @@ class MusicAdapter extends ArrayAdapter<Music> {
             listItemView.setTag(viewHolder);
         }
 
-        ViewHolder viewHolder = (ViewHolder) listItemView.getTag();
-        Music m = getItem(position);
+        final ViewHolder viewHolder = (ViewHolder) listItemView.getTag();
+        final Music m = getItem(position);
         viewHolder.artistTextView.setText(m.getArtist());
         viewHolder.songTextView.setText(m.getTitle());
-        viewHolder.albumImageView.setImageResource(m.getAlbumImage());
+
+        /* Put the task in the MessageQueue of the UI thread for future processing to gain performance. */
+        /* Setting image is expensive. */
+        Handler imageHandler = new Handler(Looper.getMainLooper());
+        imageHandler.post(new Runnable() {
+            public void run() {
+                viewHolder.albumImageView.setImageResource(m.getAlbumImage());
+            }
+        });
         return listItemView;
     }
 
+    /**
+     * For caching the resource id.
+     */
     private class ViewHolder {
         private TextView songTextView;
         private TextView artistTextView;

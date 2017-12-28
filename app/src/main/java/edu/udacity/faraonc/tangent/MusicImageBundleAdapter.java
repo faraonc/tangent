@@ -11,22 +11,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
+
 
 /**
- * Created by ConardJames on 12/26/2017.
+ * Adapter for the grid of music image bundle.
+ *
+ * @author ConardJames
+ * @version 122817-01
  */
-
 class MusicImageBundleAdapter extends ArrayAdapter {
 
+    /**
+     * Constuct and adapter for bundles of music images and names.
+     *
+     * @param context      for resource access.
+     * @param imageBundles the bundles of images and names.
+     */
     MusicImageBundleAdapter(Context context, ArrayList<MusicImageBundle> imageBundles) {
         super(context, 0, imageBundles);
     }
 
     @NonNull
     @Override
+    /**
+     * Get the view for each entry of the GridView.
+     *
+     * @param position current position in the adapter's list.
+     * @param convertView the grid item view.
+     * @param parent the parent view group.
+     */
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
@@ -35,14 +49,16 @@ class MusicImageBundleAdapter extends ArrayAdapter {
             viewHolder.imageView = (ImageView) listItemView.findViewById(R.id.grid_item_image);
             listItemView.setTag(viewHolder);
         }
-
         ViewHolder viewHolder = (ViewHolder) listItemView.getTag();
-        MusicImageBundle m = (MusicImageBundle)getItem(position);
+        MusicImageBundle m = (MusicImageBundle) getItem(position);
         viewHolder.titleTextView.setText(m.getName());
         viewHolder.imageView.setImageResource(m.getImage());
         return listItemView;
     }
 
+    /**
+     * For caching the resource ids.
+     */
     private class ViewHolder {
         private TextView titleTextView;
         private ImageView imageView;

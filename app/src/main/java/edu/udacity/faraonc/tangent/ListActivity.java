@@ -12,14 +12,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeSet;
 
+/**
+ * Manages the list of musics.
+ *
+ * @author ConardJames
+ * @version 122817-01
+ */
 public class ListActivity extends AppCompatActivity {
+
+    //keys for intent's data used by PlayMusicActivity
+    final static String LIST_SESSION_TYPE = "LIST_SESSION_TYPE";
+    final static String LIST_SONG = "LIST_SONG";
+    final static String CURRENT_POSITION = "CURRENT_POSITION";
 
     private String header;
     private Collection<Music> musicList;
     private ListSessionEnum type;
-    final static String LIST_SESSION_TYPE = "LIST_SESSION_TYPE";
-    final static String LIST_SONG = "LIST_SONG";
-    final static String CURRENT_POSITION = "CURRENT_POSITION";
 
     enum ListSessionEnum {
         SONG,
@@ -29,6 +37,11 @@ public class ListActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * Set activity and layout.
+     *
+     * @param savedInstanceState the state of the activity.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -40,6 +53,9 @@ public class ListActivity extends AppCompatActivity {
         displaySongs();
     }
 
+    /**
+     * Display the songs in the list view.
+     */
     void displaySongs() {
         ((TextView) findViewById(R.id.list_view_heading)).setText(this.header);
         MusicAdapter musicAdapter = null;
@@ -53,14 +69,11 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent intent = new Intent(ListActivity.this, PlayMusicActivity.class);
-                Music m = (Music) adapterView.getItemAtPosition(i);
                 intent.putExtra(CURRENT_POSITION, i);
                 intent.putExtra(LIST_SONG, new ArrayList<Music>(musicList));
                 startActivity(intent);
             }
         });
     }
-
 }

@@ -10,22 +10,35 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 /**
- * Created by faraonc on 12/27/17.
+ * Adapter for the list of genres.
+ *
+ * @author ConardJames
+ * @version 122817-01
  */
-
 class GenreAdapter extends ArrayAdapter {
 
+    /**
+     * Construct an adapter for genres.
+     *
+     * @param context for resource access.
+     * @param genres  arraylist of genres.
+     */
     GenreAdapter(Context context, ArrayList<String> genres) {
         super(context, 0, genres);
     }
 
     @NonNull
     @Override
+    /**
+     * Get the view for each entry of the ListView.
+     *
+     * @param position current position in the adapter's list.
+     * @param convertView the list item view.
+     * @param parent the parent view group.
+     */
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.genre_item, parent, false);
@@ -40,8 +53,10 @@ class GenreAdapter extends ArrayAdapter {
         return listItemView;
     }
 
+    /**
+     * For caching the resource id.
+     */
     private class ViewHolder {
         private TextView genreTextView;
     }
-
 }
