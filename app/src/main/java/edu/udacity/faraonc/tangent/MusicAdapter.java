@@ -23,6 +23,9 @@ class MusicAdapter extends ArrayAdapter<Music> {
         super(context, 0, new ArrayList<Music>(musics));
     }
 
+    MusicAdapter(Context context, ArrayList<Music> musics) {
+        super(context, 0, musics);
+    }
 
     @NonNull
     @Override

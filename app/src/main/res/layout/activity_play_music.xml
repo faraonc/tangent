@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/PlayParentLayoutStyle"
+    tools:context="edu.udacity.faraonc.tangent.PlayMusicActivity">
+
+    <ImageView
+        android:id="@+id/play_album_imageview"
+        style="@style/PlayAlbumStyle"
+        tools:src="@drawable/a_group_album_image" />
+
+    <TextView
+        android:id="@+id/play_song_textview"
+        style="@style/PlaySongStyle"
+        tools:text="I Love You Song" />
+
+    <TextView
+        android:id="@+id/play_artist_textview"
+        style="@style/PlayArtistStyle"
+        tools:text="Conard James Faraon" />
+
+    <SeekBar
+        android:id="@+id/seek"
+        style="@style/PlaySeekStyle" />
+
+    <LinearLayout style="@style/PlayContainerStyle">
+
+        <FrameLayout style="@style/PlayFrameStyle">
+
+            <ImageButton
+                android:id="@+id/prev"
+                style="@style/PlayButtonStyle"
+                android:src="@drawable/ic_skip_previous_black_48dp" />
+        </FrameLayout>
+
+        <FrameLayout
+
+            style="@style/PlayFrameStyle">
+
+            <ImageButton
+                android:id="@+id/play"
+                style="@style/PlayButtonStyle"
+                android:src="@drawable/ic_play_arrow_black_48dp" />
+        </FrameLayout>
+
+        <FrameLayout
+
+            style="@style/PlayFrameStyle">
+
+            <ImageButton
+                android:id="@+id/next"
+                style="@style/PlayButtonStyle"
+                android:src="@drawable/ic_skip_next_black_48dp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

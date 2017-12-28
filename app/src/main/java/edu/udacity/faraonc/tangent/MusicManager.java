@@ -85,11 +85,11 @@ class MusicManager implements Serializable {
             }
             this.albumsMap.get(album).add(music);
 
-            if(!this.artistsImageMap.containsKey(artist)){
+            if (!this.artistsImageMap.containsKey(artist)) {
                 this.artistsImageMap.put(artist, new MusicImageBundle(MusicImageBundleEnum.ARTISTS, music.getArtist(), music.getArtistImage()));
             }
 
-            if(!this.albumsImageMap.containsKey(album)){
+            if (!this.albumsImageMap.containsKey(album)) {
                 this.albumsImageMap.put(artist, new MusicImageBundle(MusicImageBundleEnum.ALBUMS, music.getAlbum(), music.getAlbumImage()));
             }
 
@@ -98,23 +98,25 @@ class MusicManager implements Serializable {
         return false;
     }
 
-    TreeMap<String, MusicImageBundle> getArtistsImageMap(){
+    TreeMap<String, MusicImageBundle> getArtistsImageMap() {
         return this.artistsImageMap;
     }
 
-    TreeMap<String, MusicImageBundle> getAlbumsImageMap(){
+    TreeMap<String, MusicImageBundle> getAlbumsImageMap() {
         return this.albumsImageMap;
     }
 
-    TreeMap<String, ArrayList<Music>> getArtistsMap(){
+    TreeMap<String, ArrayList<Music>> getArtistsMap() {
         return this.artistsMap;
     }
 
-    TreeMap<String, ArrayList<Music>> getAlbumsMap(){
+    TreeMap<String, ArrayList<Music>> getAlbumsMap() {
         return this.albumsMap;
     }
-    //TODO removeMusic
-    //This is not needed for the project requirement.
+
+    TreeMap<String, ArrayList<Music>> getGenresMap() {
+        return this.genresMap;
+    }
 
     void printSongsSet() {
         for (Music item : this.songsSet) {
@@ -149,6 +151,20 @@ class MusicManager implements Serializable {
         }
     }
 
-    //TODO print image maps
+    void printAlbumsImageMap() {
+        for (String key : this.albumsImageMap.keySet()) {
+            MusicImageBundle value = this.albumsImageMap.get(key);
+            Log.v("albumsImageMap", key + " -> " + value);
+        }
+    }
 
+    void printArtistsImageMap() {
+        for (String key : this.artistsImageMap.keySet()) {
+            MusicImageBundle value = this.artistsImageMap.get(key);
+            Log.v("artistsImageMap", key + " -> " + value);
+        }
+    }
+
+    //TODO removeMusic
+    //This is not needed for the project requirement.
 }

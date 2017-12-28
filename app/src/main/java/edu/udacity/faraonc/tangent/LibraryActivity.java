@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.content.Intent;
+import android.widget.SeekBar;
 
 //TODO import back button
 public class LibraryActivity extends AppCompatActivity {
 
     private MusicManager musicManager = new MusicManager();
+
     final static String HEADER_NAME = "HEADER_NAME";
     final static String LIST_PACKAGE = "LIST_PACKAGE";
     final static String SESSION_TYPE = "SESSION_TYPE";
@@ -21,10 +23,7 @@ public class LibraryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_library);
 
         initMusicManager();
-        musicManager.printSongsSet();
-        musicManager.printGenresMap();
-        musicManager.printAlbumsMap();
-        musicManager.printArtistsMap();
+        debug();
 
         RelativeLayout categoryViewGroup = (RelativeLayout) findViewById(R.id.songs_view);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
@@ -32,6 +31,7 @@ public class LibraryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LibraryActivity.this, ListActivity.class);
                 intent.putExtra(HEADER_NAME, getText(R.string.song_heading));
+                intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.SONG);
                 intent.putExtra(LIST_PACKAGE, musicManager.getSongsList());
                 startActivity(intent);
             }
@@ -61,13 +61,15 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-//        TODO implement Genre View
         categoryViewGroup = (RelativeLayout) findViewById(R.id.genres_view);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-//                startActivity(colorsIntent);
+                Intent intent = new Intent(LibraryActivity.this, GenreActivity.class);
+                intent.putExtra(HEADER_NAME, getText(R.string.genre_heading));
+                intent.putExtra(LIST_PACKAGE, musicManager);
+                intent.putExtra(SESSION_TYPE, MusicImageBundleEnum.GENRES);
+                startActivity(intent);
             }
         });
 
@@ -81,20 +83,20 @@ public class LibraryActivity extends AppCompatActivity {
     /* https://artlist.io License Number 523370 */
     /* Could be better if reading from the storage or using asset manager. This can do for now.*/
     private void initMusicManager() {
-        musicManager.addMusic(new Music(R.raw.a_good_mood, "A Good Mood", "Unknown",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.a_good_mood, "A Good Mood", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.outside_the_window, "Outside the Window", "Unknown",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.outside_the_window, "Outside the Window", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.rio, "Rio", "Unknown",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.rio, "Rio", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.slow_energy, "Slow Energy", "Unknown",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.slow_energy, "Slow Energy", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.verve, "Verve", "Unknown",
-                "Upbeat Acoustic & Rhythmic Songs", "A-GROUP",
+        musicManager.addMusic(new Music(R.raw.verve, "Verve", "A-GROUP",
+                "Upbeat Acoustic", "A-GROUP",
                 R.drawable.a_group_album_image, R.drawable.a_group_artist_image));
         musicManager.addMusic(new Music(R.raw.halation, "Halation", "Thoughts Awaken US",
                 "Electro-Live Synergy", "Evolv",
@@ -108,16 +110,16 @@ public class LibraryActivity extends AppCompatActivity {
         musicManager.addMusic(new Music(R.raw.young_summer, "Young Summer", "Benjamin",
                 "Pure Ambient Electronica", "Josh Leake",
                 R.drawable.benjamin_album_image, R.drawable.josh_leake_artist_image));
-        musicManager.addMusic(new Music(R.raw.on_the_way, "On the Way", "Unknown",
+        musicManager.addMusic(new Music(R.raw.on_the_way, "On the Way", "The Robbery",
                 "Lawless Rock", "The Robbery",
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.on_the_way_ver2, "On the Way Ver2", "Unknown",
+        musicManager.addMusic(new Music(R.raw.on_the_way_ver2, "On the Way Ver2", "The Robbery",
                 "Lawless Rock", "The Robbery",
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.the_robbery, "The Robbery", "Unknown",
+        musicManager.addMusic(new Music(R.raw.the_robbery, "The Robbery", "The Robbery",
                 "Lawless Rock", "The Robbery",
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.counting_the_money, "Counting the Money", "Unknown",
+        musicManager.addMusic(new Music(R.raw.counting_the_money, "Counting the Money", "The Robbery",
                 "Lawless Rock", "The Robbery",
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
         musicManager.addMusic(new Music(R.raw.abigail, "Abigail", "Rewire",
@@ -130,10 +132,19 @@ public class LibraryActivity extends AppCompatActivity {
                 "Real Rock & Roll", "Assaf Ayalon",
                 R.drawable.rewire_album_image, R.drawable.assaf_ayalon_artist_image));
         musicManager.addMusic(new Music(R.raw.new_way, "New Way", "Summer Walking",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.summer_walking_album_image, R.drawable.young_rich_pixies_artist_image));
         musicManager.addMusic(new Music(R.raw.new_day_comes, "New Day Comes", "Summer Walking",
-                "Motivational & Theatrical Electro-Acoustic", "Young Rich Pixies",
+                "Motivational & Theatrical", "Young Rich Pixies",
                 R.drawable.summer_walking_album_image, R.drawable.young_rich_pixies_artist_image));
+    }
+
+    private void debug() {
+        musicManager.printSongsSet();
+        musicManager.printGenresMap();
+        musicManager.printAlbumsMap();
+        musicManager.printArtistsMap();
+        musicManager.printAlbumsImageMap();
+        musicManager.printArtistsImageMap();
     }
 }

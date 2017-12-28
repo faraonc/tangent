@@ -19,11 +19,8 @@ import java.util.TreeMap;
 
 class MusicImageBundleAdapter extends ArrayAdapter {
 
-    private TreeMap<String, ArrayList<Music>> musicMap;
-
-    MusicImageBundleAdapter(Context context, ArrayList<MusicImageBundle> imageBundles, TreeMap<String, ArrayList<Music>>  musicMap) {
+    MusicImageBundleAdapter(Context context, ArrayList<MusicImageBundle> imageBundles) {
         super(context, 0, imageBundles);
-        this.musicMap = musicMap;
     }
 
     @NonNull

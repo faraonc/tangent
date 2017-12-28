@@ -6,5 +6,6 @@ package edu.udacity.faraonc.tangent;
 
 enum MusicImageBundleEnum {
     ARTISTS,
-    ALBUMS
+    ALBUMS,
+    GENRES
 }

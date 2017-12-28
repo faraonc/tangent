@@ -39,4 +39,9 @@ class MusicImageBundle implements Serializable, Comparable {
         return (this.name.compareTo(rhs.name));
     }
 
+    @Override
+    public String toString(){
+        return this.type + ": " + this.name;
+    }
+
 }

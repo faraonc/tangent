@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/GenreParentLayoutStyle">
+
+    <RelativeLayout style="@style/CategoryWrapperStyle">
+
+        <TextView
+            android:id="@+id/genre_textview"
+            style="@style/GenreItemStyle"
+            tools:text="Heavy Metal Rock" />
+
+        <ImageView style="@style/ChevronRightStyle" />
+
+    </RelativeLayout>
+</LinearLayout>

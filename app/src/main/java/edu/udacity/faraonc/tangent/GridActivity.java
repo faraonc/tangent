@@ -1,10 +1,11 @@
 package edu.udacity.faraonc.tangent;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -41,9 +42,20 @@ public class GridActivity extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.grid);
         ArrayList<MusicImageBundle> bundles = new ArrayList<>(this.musicManager.getArtistsImageMap().values());
         Collections.sort(bundles);
-        MusicImageBundleAdapter artistAdapter = new MusicImageBundleAdapter(this, bundles, this.musicManager.getArtistsMap());
+        MusicImageBundleAdapter artistAdapter = new MusicImageBundleAdapter(this, bundles);
         gridView.setAdapter(artistAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Intent intent = new Intent(GridActivity.this, ListActivity.class);
+                MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
+                intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());
+                intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.ARTIST);
+                intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getArtistSongsList(key.getName()));
+                startActivity(intent);
+            }
+        });
     }
 
     private void displayAlbumsGrid(){
@@ -51,8 +63,19 @@ public class GridActivity extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.grid);
         ArrayList<MusicImageBundle> bundles = new ArrayList<>(this.musicManager.getAlbumsImageMap().values());
         Collections.sort(bundles);
-        MusicImageBundleAdapter artistAdapter = new MusicImageBundleAdapter(this, bundles, this.musicManager.getAlbumsMap());
+        MusicImageBundleAdapter artistAdapter = new MusicImageBundleAdapter(this, bundles);
         gridView.setAdapter(artistAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Intent intent = new Intent(GridActivity.this, ListActivity.class);
+                MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
+                intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());
+                intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.ALBUM);
+                intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getAlbumSongsList(key.getName()));
+                startActivity(intent);
+            }
+        });
     }
 }

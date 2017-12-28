@@ -89,4 +89,10 @@ class Music implements Serializable, Comparable {
         Music rhs = (Music) o;
         return (this.title.compareTo(rhs.title));
     }
+
+    @Override
+    public String toString()
+    {
+        return this.title + " by " + this.artist + " - " + this.album;
+    }
 }
