@@ -42,6 +42,7 @@ public class PlayMusicActivity extends AppCompatActivity {
         display();
     }
 
+    //TODO handle lifecycle
     private void initImageButtonListeners() {
         final ImageButton button = (ImageButton) findViewById(R.id.play);
         button.setOnClickListener(new View.OnClickListener() {
