@@ -93,59 +93,77 @@ public class LibraryActivity extends AppCompatActivity {
      * Initialize music manager's data.
      */
     private void initMusicManager() {
-        musicManager.addMusic(new Music(R.raw.a_good_mood, "A Good Mood", "Unknown",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        String young_rich_pixies = getString(R.string.young_rich_pixies);
+        String a_group = getString(R.string.a_group);
+        String evolv = getString(R.string.evolv);
+        String josh_leake = getString(R.string.josh_leake);
+        String the_robbery = getString(R.string.the_robbery);
+        String assaf_ayalon = getString(R.string.assaf_ayalon);
+        String motivational_theatrical = getString(R.string.motivational_theatrical);
+        String upbeat_acoustic = getString(R.string.upbeat_acoustic);
+        String electro_live_synergy = getString(R.string.electro_live_synergy);
+        String pure_ambient_electronica = getString(R.string.pure_ambient_electronica);
+        String lawless_rock = getString(R.string.lawless_rock);
+        String real_rock_roll = getString(R.string.real_rock_roll);
+        String unknown = getString(R.string.unknown);
+        String thoughts_awaken_us = getString(R.string.thoughts_awaken_us);
+        String benjamin = getString(R.string.benjamin);
+        String rewire = getString(R.string.rewire);
+        String summer_walking = getString(R.string.summer_walking);
+
+        musicManager.addMusic(new Music(R.raw.a_good_mood, getString(R.string.a_good_mood), unknown,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.outside_the_window, "Outside the Window", "Unknown",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.outside_the_window, getString(R.string.outside_the_window), unknown,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.rio, "Rio", "Unknown",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.rio, getString(R.string.rio), unknown,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.slow_energy, "Slow Energy", "Unknown",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.slow_energy, getString(R.string.slow_energy), unknown,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.young_rich_pixies_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.verve, "Verve", "Unknown",
-                "Upbeat Acoustic", "A-GROUP",
+        musicManager.addMusic(new Music(R.raw.verve, getString(R.string.verve), unknown,
+                upbeat_acoustic, a_group,
                 R.drawable.a_group_album_image, R.drawable.a_group_artist_image));
-        musicManager.addMusic(new Music(R.raw.halation, "Halation", "Thoughts Awaken US",
-                "Electro-Live Synergy", "Evolv",
+        musicManager.addMusic(new Music(R.raw.halation, getString(R.string.halation), thoughts_awaken_us,
+                electro_live_synergy, evolv,
                 R.drawable.thoughts_awaken_us_album_image, R.drawable.evolv_artist_image));
-        musicManager.addMusic(new Music(R.raw.roots, "Roots", "Benjamin",
-                "Pure Ambient Electronica", "Josh Leake",
+        musicManager.addMusic(new Music(R.raw.roots, getString(R.string.roots), benjamin,
+                pure_ambient_electronica, josh_leake,
                 R.drawable.benjamin_album_image, R.drawable.josh_leake_artist_image));
-        musicManager.addMusic(new Music(R.raw.family, "Family", "Benjamin",
-                "Pure Ambient Electronica", "Josh Leake",
+        musicManager.addMusic(new Music(R.raw.family, getString(R.string.family), benjamin,
+                pure_ambient_electronica, josh_leake,
                 R.drawable.benjamin_album_image, R.drawable.josh_leake_artist_image));
-        musicManager.addMusic(new Music(R.raw.young_summer, "Young Summer", "Benjamin",
-                "Pure Ambient Electronica", "Josh Leake",
+        musicManager.addMusic(new Music(R.raw.young_summer, getString(R.string.young_summer), benjamin,
+                pure_ambient_electronica, josh_leake,
                 R.drawable.benjamin_album_image, R.drawable.josh_leake_artist_image));
-        musicManager.addMusic(new Music(R.raw.on_the_way, "On the Way", "Unknown",
-                "Lawless Rock", "The Robbery",
+        musicManager.addMusic(new Music(R.raw.on_the_way, getString(R.string.on_the_way), unknown,
+                lawless_rock, the_robbery,
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.on_the_way_ver2, "On the Way Ver2", "Unknown",
-                "Lawless Rock", "The Robbery",
+        musicManager.addMusic(new Music(R.raw.on_the_way_ver2, getString(R.string.on_the_way_v2), unknown,
+                lawless_rock, the_robbery,
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.the_robbery, "The Robbery", "Unknown",
-                "Lawless Rock", "The Robbery",
+        musicManager.addMusic(new Music(R.raw.the_robbery, getString(R.string.the_robbery), unknown,
+                lawless_rock, the_robbery,
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.counting_the_money, "Counting the Money", "Unknown",
-                "Lawless Rock", "The Robbery",
+        musicManager.addMusic(new Music(R.raw.counting_the_money, getString(R.string.counting_the_money), unknown,
+                lawless_rock, the_robbery,
                 R.drawable.the_robbery_album_image, R.drawable.the_robbery_artist_image));
-        musicManager.addMusic(new Music(R.raw.abigail, "Abigail", "Rewire",
-                "Real Rock & Roll", "Assaf Ayalon",
+        musicManager.addMusic(new Music(R.raw.abigail, getString(R.string.abigail), rewire,
+                real_rock_roll, assaf_ayalon,
                 R.drawable.rewire_album_image, R.drawable.assaf_ayalon_artist_image));
-        musicManager.addMusic(new Music(R.raw.dark_sky, "Dark Sky", "Rewire",
-                "Real Rock & Roll", "Assaf Ayalon",
+        musicManager.addMusic(new Music(R.raw.dark_sky, getString(R.string.dark_sky), rewire,
+                real_rock_roll, assaf_ayalon,
                 R.drawable.rewire_album_image, R.drawable.assaf_ayalon_artist_image));
-        musicManager.addMusic(new Music(R.raw.born_tired_and_raised_lazy, "Born Tired and Raised Lazy", "Rewire",
-                "Real Rock & Roll", "Assaf Ayalon",
+        musicManager.addMusic(new Music(R.raw.born_tired_and_raised_lazy, getString(R.string.born_tired_raised_lazy), rewire,
+                real_rock_roll, assaf_ayalon,
                 R.drawable.rewire_album_image, R.drawable.assaf_ayalon_artist_image));
-        musicManager.addMusic(new Music(R.raw.new_way, "New Way", "Summer Walking",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.new_way, getString(R.string.new_way), summer_walking,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.summer_walking_album_image, R.drawable.young_rich_pixies_artist_image));
-        musicManager.addMusic(new Music(R.raw.new_day_comes, "New Day Comes", "Summer Walking",
-                "Motivational & Theatrical", "Young Rich Pixies",
+        musicManager.addMusic(new Music(R.raw.new_day_comes, getString(R.string.new_day_comes), summer_walking,
+                motivational_theatrical, young_rich_pixies,
                 R.drawable.summer_walking_album_image, R.drawable.young_rich_pixies_artist_image));
     }
 

@@ -55,6 +55,7 @@ public class PlayMusicActivity extends AppCompatActivity {
         this.position = intent.getIntExtra(ListActivity.CURRENT_POSITION, 0);
         //the list of songs
         this.musicList = (ArrayList<Music>) intent.getSerializableExtra(ListActivity.LIST_SONG);
+        this.playButton = (ImageButton) findViewById(R.id.play);
         initSeekBar();
         initImageButtonListeners();
         display();
@@ -76,6 +77,10 @@ public class PlayMusicActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+                if (mediaPlayer == null) {
+                    //music needs to be set to ready state (prepared)
+                    prepareMusic();
+                }
             }
 
             @Override
@@ -90,7 +95,6 @@ public class PlayMusicActivity extends AppCompatActivity {
      * Add listeners to the buttons
      */
     private void initImageButtonListeners() {
-        this.playButton = (ImageButton) findViewById(R.id.play);
         this.playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,6 +145,24 @@ public class PlayMusicActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * Prepare music to play on certain time using the seekbar.
+     */
+    private void prepareMusic() {
+        this.mediaPlayer = MediaPlayer.create(this, musicList.get(this.position).getData());
+        this.mediaPlayer.setOnCompletionListener(this.doOnCompletion);
+        this.finalTime = this.mediaPlayer.getDuration();
+        this.startTime = this.mediaPlayer.getCurrentPosition();
+
+        //set seekbar and update the seekbar while music is playing.
+        if (!this.isSeekBarInitiated) {
+            this.seekbar.setMax((int) this.finalTime);
+            this.isSeekBarInitiated = true;
+        }
+        this.seekbar.setProgress((int) this.startTime);
+        this.myHandler.postDelayed(this.UpdateSongTime, 100);
     }
 
     /**

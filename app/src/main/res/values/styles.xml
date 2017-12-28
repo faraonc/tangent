@@ -10,7 +10,7 @@
 
     <style name="HeadingStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">88dp</item>
+        <item name="android:layout_height">@dimen/heading_style_height</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">16dp</item>
         <item name="android:textStyle">bold</item>
@@ -26,7 +26,7 @@
 
     <style name="CategoryStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">66dp</item>
+        <item name="android:layout_height">@dimen/category_style_height</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">20dp</item>
         <item name="android:textStyle">bold</item>
@@ -36,15 +36,15 @@
 
     <style name="LineBreakStyle">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_height">@dimen/line_break_height</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">2dp</item>
         <item name="android:background">@color/colorLightGray</item>
     </style>
 
     <style name="ChevronRightStyle">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">@dimen/chevron_right_width</item>
+        <item name="android:layout_height">@dimen/chevron_right_height</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerVertical">true</item>
@@ -85,7 +85,7 @@
 
     <style name="ListParentLayoutStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">66dp</item>
+        <item name="android:layout_height">@dimen/list_parent_layout_height</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
@@ -99,8 +99,8 @@
     </style>
 
     <style name="PlayIconStyle">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">@dimen/plan_icon_width</item>
+        <item name="android:layout_height">@dimen/play_icon_height</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_margin">16dp</item>
@@ -123,8 +123,8 @@
     </style>
 
     <style name="AlbumImageStyle">
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">@dimen/album_image_width</item>
+        <item name="android:layout_height">@dimen/album_image_height</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginTop">2dp</item>
@@ -140,8 +140,8 @@
     </style>
 
     <style name="GridImageItemStyle">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_width">@dimen/grid_image_width</item>
+        <item name="android:layout_height">@dimen/grid_image_width</item>
     </style>
 
     <style name="GridTextStyle">
@@ -178,8 +178,8 @@
     </style>
 
     <style name="PlayAlbumStyle">
-        <item name="android:layout_width">325dp</item>
-        <item name="android:layout_height">325dp</item>
+        <item name="android:layout_width">@dimen/play_image_width</item>
+        <item name="android:layout_height">@dimen/play_image_height</item>
         <item name="android:layout_margin">8dp</item>
     </style>
 
