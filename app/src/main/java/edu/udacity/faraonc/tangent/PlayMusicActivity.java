@@ -231,10 +231,22 @@ public class PlayMusicActivity extends AppCompatActivity {
     /**
      * Pause the media player until the user gets back.
      */
+    protected void onPause() {
+        super.onPause();
+        playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+    @Override
+    /**
+     * Pause the media player until the user gets back.
+     */
     protected void onStop() {
         super.onStop();
         playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
-        if (mediaPlayer != null) {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         }
     }
