@@ -9,14 +9,14 @@ This is an Android music player inspired from the iPhone's music player.
   - Implement Parceable for better performance.
 
 
-![picture](images_md/library.png)
+![picture](md_images/library.png)
 
-![picture](images_md/albums.png)
+![picture](md_images/albums.png)
 
-![picture](images_md/genres.png)
+![picture](md_images/genres.png)
 
-![picture](images_md/artists.png)
+![picture](md_images/artists.png)
 
-![picture](images_md/songs.png)
+![picture](md_images/songs.png)
 
-![picture](images_md/playing.png)
+![picture](md_images/playing.png)
