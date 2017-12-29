@@ -6,6 +6,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -221,23 +222,23 @@ public class PlayMusicActivity extends AppCompatActivity {
 
     @Override
     /**
-     * Pause the media player until the user gets back.
-     */
-    protected void onStop() {
-        super.onStop();
-        playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
-        if (mediaPlayer != null) {
-            mediaPlayer.pause();
-        }
-    }
-
-    @Override
-    /**
-     * Free up resources.
+     * Release the resource on destroy
      */
     protected void onDestroy() {
         super.onDestroy();
         releaseResource();
+    }
+
+    @Override
+    /**
+     * Pause the media player until the user gets back.
+     */
+    protected void onPause() {
+        super.onPause();
+        playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
+        }
     }
 
     /**

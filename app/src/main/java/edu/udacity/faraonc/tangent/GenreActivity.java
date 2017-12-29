@@ -53,7 +53,7 @@ public class GenreActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(GenreActivity.this, ListActivity.class);
                 String key = (String) adapterView.getItemAtPosition(i);
-                intent.putExtra(LibraryActivity.HEADER_NAME, key);
+                intent.putExtra(LibraryActivity.HEADER_NAME, getString(R.string.song_heading));
                 intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.GENRE);
                 intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getGenreSongsList(key));
                 startActivity(intent);

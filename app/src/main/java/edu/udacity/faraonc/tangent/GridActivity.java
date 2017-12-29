@@ -65,7 +65,7 @@ public class GridActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(GridActivity.this, ListActivity.class);
                 MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
-                intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());
+                intent.putExtra(LibraryActivity.HEADER_NAME, getString(R.string.song_heading));
                 intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.ARTIST);
                 intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getArtistSongsList(key.getName()));
                 startActivity(intent);
@@ -88,7 +88,7 @@ public class GridActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(GridActivity.this, ListActivity.class);
                 MusicImageBundle key = (MusicImageBundle) adapterView.getItemAtPosition(i);
-                intent.putExtra(LibraryActivity.HEADER_NAME, key.getName());
+                intent.putExtra(LibraryActivity.HEADER_NAME, getString(R.string.song_heading));
                 intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.ALBUM);
                 intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getAlbumSongsList(key.getName()));
                 startActivity(intent);
