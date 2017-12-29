@@ -5,10 +5,18 @@
     style="@style/ActivityLayoutStyle"
     tools:context="edu.udacity.faraonc.tangent.ListActivity">
 
+    <LinearLayout style="@style/HeadingContainerStyle">
+
+        <Button
+            android:id="@+id/list_home_button"
+            style="@style/HomeButtonStyle" />
+
     <TextView
         android:id="@+id/list_view_heading"
         style="@style/HeadingStyle"
         tools:text="@string/song_heading" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list"

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,7 +16,7 @@ import java.util.Collections;
  * Manages the list of genres.
  *
  * @author ConardJames
- * @version 122817-01
+ * @version 122817-02
  */
 public class GenreActivity extends AppCompatActivity {
 
@@ -34,6 +35,13 @@ public class GenreActivity extends AppCompatActivity {
         this.header = (String) intent.getSerializableExtra(LibraryActivity.HEADER_NAME);
         this.musicManager = (MusicManager) intent.getSerializableExtra(LibraryActivity.LIST_PACKAGE);
         setContentView(R.layout.activity_list);
+        ((Button) findViewById(R.id.list_home_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GenreActivity.this, LibraryActivity.class);
+                startActivity(intent);
+            }
+        });
         display();
     }
 
@@ -53,7 +61,7 @@ public class GenreActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(GenreActivity.this, ListActivity.class);
                 String key = (String) adapterView.getItemAtPosition(i);
-                intent.putExtra(LibraryActivity.HEADER_NAME, key);
+                intent.putExtra(LibraryActivity.HEADER_NAME, getString(R.string.song_heading));
                 intent.putExtra(ListActivity.LIST_SESSION_TYPE, ListActivity.ListSessionEnum.GENRE);
                 intent.putExtra(LibraryActivity.LIST_PACKAGE, musicManager.getGenreSongsList(key));
                 startActivity(intent);

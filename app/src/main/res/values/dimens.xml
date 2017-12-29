@@ -12,6 +12,8 @@
     <dimen name="album_image_width">50dp</dimen>
     <dimen name="grid_image_height">200dp</dimen>
     <dimen name="grid_image_width">200dp</dimen>
-    <dimen name="play_image_height">325dp</dimen>
-    <dimen name="play_image_width">325dp</dimen>
+    <dimen name="play_image_height">225dp</dimen>
+    <dimen name="play_image_width">225dp</dimen>
+    <dimen name="library_button_height">44dp</dimen>
+    <dimen name="library_button_width">50dp</dimen>
 </resources>

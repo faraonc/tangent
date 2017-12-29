@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * Plays the music in a separate user-interface.
  *
  * @author ConardJames
- * @version 122817-01
+ * @version 122817-02
  */
 public class PlayMusicActivity extends AppCompatActivity {
 
@@ -55,6 +56,13 @@ public class PlayMusicActivity extends AppCompatActivity {
         this.position = intent.getIntExtra(ListActivity.CURRENT_POSITION, 0);
         //the list of songs
         this.musicList = (ArrayList<Music>) intent.getSerializableExtra(ListActivity.LIST_SONG);
+        ((Button) findViewById(R.id.play_home_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlayMusicActivity.this, LibraryActivity.class);
+                startActivity(intent);
+            }
+        });
         this.playButton = (ImageButton) findViewById(R.id.play);
         initSeekBar();
         initImageButtonListeners();

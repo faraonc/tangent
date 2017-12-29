@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Adapter for the list of genres.
  *
  * @author ConardJames
- * @version 122817-01
+ * @version 122817-02
  */
 class GenreAdapter extends ArrayAdapter {
 

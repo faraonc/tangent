@@ -4,14 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
+import android.widget.Button;
 import android.content.Intent;
 
 /**
  * Manages the list of selections
  *
  * @author ConardJames
- * @version 122817-01
+ * @version 122817-02
  */
 public class LibraryActivity extends AppCompatActivity {
 
@@ -36,7 +36,7 @@ public class LibraryActivity extends AppCompatActivity {
         /*Displays contents of data structures in the Logcat */
         //debug();
 
-        RelativeLayout categoryViewGroup = (RelativeLayout) findViewById(R.id.songs_view);
+        Button categoryViewGroup = (Button) findViewById(R.id.songs_button);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-        categoryViewGroup = (RelativeLayout) findViewById(R.id.artists_view);
+        categoryViewGroup = (Button) findViewById(R.id.artists_button);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-        categoryViewGroup = (RelativeLayout) findViewById(R.id.albums_view);
+        categoryViewGroup = (Button) findViewById(R.id.albums_button);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +72,7 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-        categoryViewGroup = (RelativeLayout) findViewById(R.id.genres_view);
+        categoryViewGroup = (Button) findViewById(R.id.genres_button);
         categoryViewGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

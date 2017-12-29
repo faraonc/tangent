@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import java.util.TreeSet;
  * Manages the list of musics.
  *
  * @author ConardJames
- * @version 122817-01
+ * @version 122817-02
  */
 public class ListActivity extends AppCompatActivity {
 
@@ -50,6 +51,13 @@ public class ListActivity extends AppCompatActivity {
         this.type = (ListSessionEnum) intent.getSerializableExtra(LIST_SESSION_TYPE);
         setContentView(R.layout.activity_list);
         this.musicList = (Collection<Music>) intent.getSerializableExtra(LibraryActivity.LIST_PACKAGE);
+        ((Button) findViewById(R.id.list_home_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, LibraryActivity.class);
+                startActivity(intent);
+            }
+        });
         displaySongs();
     }
 

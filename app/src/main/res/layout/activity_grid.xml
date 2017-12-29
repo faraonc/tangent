@@ -5,10 +5,18 @@
     style="@style/ActivityLayoutStyle"
     tools:context="edu.udacity.faraonc.tangent.GridActivity">
 
-    <TextView
-        android:id="@+id/grid_view_heading"
-        style="@style/HeadingStyle"
-        tools:text="@string/song_heading" />
+    <LinearLayout style="@style/HeadingContainerStyle">
+
+        <Button
+            android:id="@+id/grid_home_button"
+            style="@style/HomeButtonStyle" />
+
+        <TextView
+            android:id="@+id/grid_view_heading"
+            style="@style/HeadingStyle"
+            tools:text="@string/genre_heading" />
+
+    </LinearLayout>
 
     <GridView
         android:id="@+id/grid"

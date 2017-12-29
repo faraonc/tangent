@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Tangent</string>
+    <string name="play_header">Tangent Music</string>
     <string name="now_playing">Now Playing</string>
     <string name="library_heading">Library</string>
     <string name="song_heading">Songs</string>
@@ -40,5 +41,4 @@
     <string name="born_tired_raised_lazy">Born Tired and Raised Lazy</string>
     <string name="new_way">New Way</string>
     <string name="new_day_comes">New Day Comes</string>
-
 </resources>

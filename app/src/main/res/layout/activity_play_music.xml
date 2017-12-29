@@ -5,6 +5,16 @@
     style="@style/PlayParentLayoutStyle"
     tools:context="edu.udacity.faraonc.tangent.PlayMusicActivity">
 
+    <LinearLayout style="@style/PlayHeaderStyle">
+
+        <Button
+            android:id="@+id/play_home_button"
+            style="@style/PlayHomeButtonStyle" />
+
+        <TextView style="@style/PlayHeaderTextStyle"/>
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/play_album_imageview"
         style="@style/PlayAlbumStyle"
